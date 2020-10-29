@@ -9,15 +9,20 @@ package Frontera;
  *
  * @author Nicolas
  */
+import Entidad.*;
+import java.util.ArrayList;
 public class FramePrincipal extends javax.swing.JFrame {
     private Registro registro = new Registro() ;
     private Ingreso ingreso = new Ingreso();
+    
+    public static Sistema sistema = new Sistema();
 
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
+        Inicializacion();
     }
 
     /**
@@ -137,6 +142,33 @@ public class FramePrincipal extends javax.swing.JFrame {
                 new FramePrincipal().setVisible(true);
             }
         });
+    }
+    public void Inicializacion(){
+        ArrayList<Usuario> usuarios = new ArrayList<>() ;
+        
+        Usuario a = new Usuario();
+        Usuario b = new Usuario();
+        Usuario c = new Usuario();
+        
+        a.setNombre("Juan");
+        a.setPassword("1234");
+        b.setNombre("Pedro");
+        b.setPassword("123");
+        c.setNombre("Maria");
+        c.setPassword("12345");
+        
+        usuarios.add(a);
+        usuarios.add(b);
+        usuarios.add(c);
+        
+        sistema.setUsuarios(usuarios);
+        
+        for(Usuario u : sistema.getUsuarios()){
+            System.out.println(u.getNombre());
+            System.out.println(u.getPassword());
+            System.out.println("-------------");
+            
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
